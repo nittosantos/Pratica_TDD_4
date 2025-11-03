@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
+from core.models import Agenda
 
 class LoginForm(ModelForm):
     class Meta:
@@ -46,3 +47,34 @@ class LoginForm(ModelForm):
                 raise ValidationError("Senha incorreta para o e-mail informado.")
 
             self.user = user
+
+
+class AgendaForm(ModelForm):
+    class Meta:
+        model = Agenda
+        fields = ('nome_completo', 'telefone', 'email', 'observacao')
+        labels = {
+            'nome_completo': 'Nome Completo:',
+            'telefone': 'Telefone:',
+            'email': 'E-Mail:',
+            'observacao': 'Observação:',
+        }
+        widgets = {
+            'nome_completo': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Digite o nome completo'
+            }),
+            'telefone': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Digite o telefone'
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Digite o e-mail'
+            }),
+            'observacao': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Digite observações (opcional)'
+            }),
+        }

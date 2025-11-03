@@ -1,0 +1,31 @@
+# Ignore Django templates
+**/templates/**/*.html
+**/templates/**/*.htm
+*.html
+
+# Ignore migrations
+**/migrations/**/*.py
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore static files
+**/static/**
+**/media/**
+
+# Ignore database
+*.db
+*.sqlite3
+*.sqlite
+
+# Ignore coverage
+.coverage
+htmlcov/
+*.cover
+
+# Ignore virtual environment
+venv/
+env/
+ENV/
