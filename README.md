@@ -234,7 +234,7 @@ TOTAL                                         476     11    98%
 - ✅ **Testes de Autenticação:** Login, logout e proteção de rotas
 - ✅ **Testes de Interface:** Templates e renderização
 
-**Total de Testes:** 47 testes, todos passando ✅
+**Total de Testes:** 52 testes, todos passando ✅
 
 ### Executar Testes
 
@@ -251,28 +251,6 @@ coverage run --source='.' manage.py test
 coverage report
 coverage html  # Abre htmlcov/index.html no navegador
 ```
-
-## 📸 Imagens do Projeto
-
-### Sprint 1 - Autenticação
-
-<img src="caso_uso.png">
-
-A expectativa do projeto é que tenha-se uma agenda. O que foi priorizado na primeira sprint foi o sistema de login/logout.
-O login somente pode ocorrer com o e-mail institucional @fatec.sp.gov.br
-
-<img src="login.png">
-Imagem 1: Tela de Login
-
-<img src="index.png">
-Imagem 2: Tela index
-
-<img src="logout.png">
-Imagem 3: Tela logout
-
-### Sprint 2 - CRUD
-
-<img src="model.png">
 
 ## ✅ Requisitos Implementados
 
@@ -300,9 +278,9 @@ O código fonte passou por atualizações para acomodar os novos requisitos. Os 
 - ✅ Testes de formulário de contatos
 - ✅ Cobertura mantida acima de 90% (objetivo alcançado: **98%**)
 
-<img src="cobertura_testes.png">
-
 ## 👤 Desenvolvido por
+
+**Wellyngton Santos** - Fullstack Developer
 
 Projeto desenvolvido como prática acadêmica da disciplina "Desenvolvimento Web 3" - FATEC.
 
