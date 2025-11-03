@@ -1,3 +1,4 @@
+import re
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
@@ -66,7 +67,7 @@ class AgendaForm(ModelForm):
             }),
             'telefone': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite o telefone'
+                'placeholder': 'Ex: (19) 99999-8888 ou 19999998888'
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
@@ -78,3 +79,38 @@ class AgendaForm(ModelForm):
                 'placeholder': 'Digite observações (opcional)'
             }),
         }
+        error_messages = {
+            'nome_completo': {
+                'required': 'O nome completo é obrigatório.',
+            },
+            'telefone': {
+                'required': 'O telefone é obrigatório.',
+            },
+            'email': {
+                'required': 'O e-mail é obrigatório.',
+                'invalid': 'Informe um endereço de e-mail válido.',
+            },
+        }
+
+    def clean_telefone(self):
+        telefone = self.cleaned_data.get('telefone')
+        if telefone:
+            # Verifica se contém apenas caracteres válidos (dígitos, parênteses, traços, espaços)
+            if not re.match(r'^[\d\s\(\)\-]+$', telefone):
+                raise ValidationError('O telefone deve conter apenas números e caracteres especiais permitidos ((), -, espaços).')
+
+            # Remove caracteres especiais para contar apenas os dígitos
+            telefone_limpo = re.sub(r'[^\d]', '', telefone)
+
+            # Verifica se tem pelo menos alguns dígitos
+            if not telefone_limpo:
+                raise ValidationError('O telefone deve conter pelo menos alguns números.')
+
+            # Verifica o tamanho mínimo (10 dígitos para telefone fixo) e máximo (11 dígitos para celular)
+            if len(telefone_limpo) < 10:
+                raise ValidationError('O telefone deve ter no mínimo 10 dígitos.')
+
+            if len(telefone_limpo) > 11:
+                raise ValidationError('O telefone deve ter no máximo 11 dígitos.')
+
+        return telefone
