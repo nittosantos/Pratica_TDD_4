@@ -33,7 +33,7 @@ Este projeto implementa uma **Agenda de Contatos** completa com sistema de auten
 
 ```console
 # 1. Clone o repositório
-git clone https://github.com/orlandosaraivajr/Pratica_TDD_4.git
+git clone https://github.com/nittosantos/Pratica_TDD_4.git
 cd Pratica_TDD_4/
 
 # 2. Crie o ambiente virtual
@@ -65,7 +65,7 @@ python manage.py runserver
 
 ```console
 # 1. Clone o repositório
-git clone https://github.com/orlandosaraivajr/Pratica_TDD_4.git
+git clone https://github.com/nittosantos/Pratica_TDD_4.git
 cd Pratica_TDD_4/
 
 # 2. Crie o ambiente virtual
